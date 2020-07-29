@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: poc-example
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /user
+        backend:
+          serviceName: user-service
+          servicePort: 8080
+      - path: /products
+        backend:
+          serviceName: product-service
+          servicePort: 8081
+      - path: /cart
+        backend:
+          serviceName: cart-service
+          servicePort: 8082
+      - path: /order
+        backend:
+          serviceName: order-service
+          servicePort: 8083
